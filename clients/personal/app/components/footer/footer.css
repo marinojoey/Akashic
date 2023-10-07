@@ -1,0 +1,30 @@
+/* This file exclusively controls the Footer icons
+ * hover states. The hover pseudo selector is not
+ * available inline and I did not want this to be
+ * a client side script.
+*/
+
+.MpBlack,
+.MpGreen {
+  display: none;
+}
+
+span:hover .MpBlack {
+  display: none;
+}
+
+span:hover .MpGreen {
+  display: block;
+}
+
+span .MpBlack {
+  display: block;
+}
+
+.icon {
+  color: #000000;
+}
+
+.icon:hover {
+  color: #167553;
+}

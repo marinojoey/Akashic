@@ -1,0 +1,32 @@
+{
+  "extends": ["next/core-web-vitals", "airbnb", "plugin:@typescript-eslint/recommended", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "max-len": ["error", { "code": 120 }],
+    "quotes": ["error", "single"],
+    "no-plusplus": "off",
+    "operator-linebreak": "off",
+    "react/require-default-props": "off",
+    "object-curly-newline": ["error", { "consistent": true }],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/function-component-definition": "off",
+    "semi": ["error", "never"],
+    "arrow-body-style": "off",
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+    "no-trailing-spaces": "error",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "react/jsx-one-expression-per-line": "off"
+  }
+}
