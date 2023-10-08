@@ -26,5 +26,25 @@ docker compose exec app composer install
 echo -e "${WHITE}Starting Personal...${NC}"
 docker compose up -d --remove-orphans nextjs
 
+duration=15
+step=1
+
+echo -ne 'Progress: [>                   ] (0%)'
+
+for (( i=0; i<$duration; i+=$step )); do
+  sleep $step
+  pct=$(( ($i * 100) / $duration ))
+  barLen=$(( ($pct * 20) / 100 ))
+  bar=$(printf "%0.s#" $(seq 1 $barLen))
+  emptyBar=$(printf "%0.s " $(seq 1 $((20 - $barLen)) ))
+  echo -ne "\rWaiting for DB to hookup? Idk honestly but this makes it work \n"
+  echo -ne "\rProgress: [$bar$emptyBar] ($pct%)"
+done
+
+echo -e "\rDone: [####################] (100%)"
+
+echo -e "${WHITE}Running migrations...${NC}"
+docker compose exec app php artisan migrate
+
 # It built, friend
 echo -e "${WHITE}DAAAANG, docker built!!! Nice.${NC}"
