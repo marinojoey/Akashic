@@ -5,5 +5,5 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --production
 COPY . .
 RUN pnpm run build
-CMD ["pnpm", "start"]
+CMD ["pnpm", "run", "dev"]
 EXPOSE 3000

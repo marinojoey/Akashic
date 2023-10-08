@@ -18,6 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} flex min-h-screen flex-col justify-between`}>
         <NavBar />
         <main className="mb-0 mt-0 h-full flex-grow bg-primary pl-0">{children}</main>
+        <div>H!!</div>
+        <hi>sdfsf</hi>
         <Footer />
       </body>
     </html>

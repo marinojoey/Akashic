@@ -50,6 +50,8 @@ services:
       - "3006:3000"
     networks:
       - app-network
+    volumes:
+      - ./clients/personal:/app
     command: ["pnpm", "run", "dev"]
 
   # Nginx Service
