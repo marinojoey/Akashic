@@ -1,9 +1,29 @@
+'use client'
+
 // import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // import heroimage from './assets/heroimage.jpeg'
 import HeroBackground from './assets/icons/Hero_background'
+import axios from 'axios';
 
 const Home = () => {
+  const [userData, setUserData] = useState<any>(null); // State to store user data
+
+    useEffect(() => {
+    // Define an async function to make the Axios call
+    async function fetchUserData() {
+      try {
+        const response = await axios.get('http://127.0.0.1:3005/api/user/1');
+        // Assuming the response contains user data, set it in state
+        setUserData(response.data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    fetchUserData();
+  }, []);
+  console.log('userData', userData)
   return (
     <section className="flex h-full w-full flex-col justify-between bg-primary text-homeText">
       <h1
