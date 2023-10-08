@@ -46,5 +46,8 @@ echo -e "\rDone: [####################] (100%)"
 echo -e "${WHITE}Running migrations...${NC}"
 docker compose exec app php artisan migrate
 
+echo -e "${WHITE}Running seeders...${NC}"
+docker compose exec app php artisan db:seed
+
 # It built, friend
 echo -e "${WHITE}DAAAANG, docker built!!! Nice.${NC}"
