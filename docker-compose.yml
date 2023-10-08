@@ -37,6 +37,8 @@ services:
       - mysql
     networks:
       - app-network
+    volumes:
+      - ./server:/var/www
 
   # Personal Service
   nextjs:
