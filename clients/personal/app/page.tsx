@@ -1,31 +1,38 @@
 'use client'
 
+import axios from 'axios'
 // import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 // import heroimage from './assets/heroimage.jpeg'
 import HeroBackground from './assets/icons/Hero_background'
-import axios from 'axios';
 
+interface UserData {
+  body: string
+  id: number
+  title: string
+  created_at: string
+  updated_at: string
+  user_id: number
+}
 const Home = () => {
-  const [userData, setUserData] = useState<any>(null); // State to store user data
+  const [userData, setUserData] = useState<UserData[]>([
+    { body: '', id: 0, title: 'null', created_at: '', updated_at: '', user_id: 0 }
+  ])
 
     useEffect(() => {
     // Define an async function to make the Axios call
     async function fetchUserData() {
-      try {
-        const response = await axios.get('http://127.0.0.1:3005/api/user/1');
-        // Assuming the response contains user data, set it in state
-        setUserData(response.data);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
+      const response = await axios.get('http://127.0.0.1:3005/api/user/1')
+      // Assuming the response contains user data, set it in state
+      setUserData(response.data)
     }
 
-    fetchUserData();
-  }, []);
-  console.log('userData', userData)
+    fetchUserData()
+  }, [])
+  const data = userData[0]
   return (
     <section className="flex h-full w-full flex-col justify-between bg-primary text-homeText">
+      <div>{data && data.title}</div>
       <h1
         className="container mx-auto flex h-full flex-col justify-center pl-12 pt-6
           text-3xl font-medium sm:pl-8 md:max-w-3xl md:max-3xl:pl-12 md:max-3xl:pt-16"
